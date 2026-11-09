@@ -11,8 +11,8 @@ venv/
 # (§13 items 25, 64). Rotation stays owed on principle: CSFLE_MASTER_KEY,
 # JWT_SECRET, the Atlas URI and the Gmail app password all enter git history.
 # Local backups stay out -- noise, not config.
-#.env
-#.env.*
+.env
+.env.*
 .env.bak.*
 .env.*.bak
 env.secrets
@@ -44,14 +44,7 @@ emg-service/history.json
 emg-service/data/*.bin
 
 # Old physio reference (temp, delete after Group E)
-backend/_old_physio_reference/__pycache__/
-backend/_old_physio_reference/.git/
-backend/_old_physio_reference/.claude/
-backend/_old_physio_reference/graphify-out/
-backend/_old_physio_reference/*.md
-backend/_old_physio_reference/.gitignore
-backend/_old_physio_reference/.graphifyignore
-
+backend/_old_physio_reference/
 .graphifyignore
 
 # IDE
