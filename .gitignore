@@ -5,11 +5,26 @@ __pycache__/
 
 # Virtual environments
 venv/
-.env
-.env.*
+# Owner 2026-10-13: .env IS tracked on purpose. The repo is private, and scp-ing
+# the env to the VPS on every setup is a waste; it comes from the repo instead.
+# Same posture as `tywala/server`, which already tracks .env and master-key.txt
+# (§13 items 25, 64). Rotation stays owed on principle: CSFLE_MASTER_KEY,
+# JWT_SECRET, the Atlas URI and the Gmail app password all enter git history.
+# Local backups stay out -- noise, not config.
+#.env
+#.env.*
+.env.bak.*
+.env.*.bak
+env.secrets
 
+mongodb_crypt/
 
+# Owner 2026-10-13: every .md is ignored EXCEPT docs/, which is now tracked.
+# Before this, `git status` never showed a doc edit and a new doc needed
+# `git add -f` or it was silently lost.
 *.md
+#!docs/*.md
+#!docs/**/*.md
 *.zip
 gitKeys.txt
 graphify-out/
@@ -84,3 +99,19 @@ part2/temp/
 
 # CSFLE master key lives in the root .env as CSFLE_MASTER_KEY, never in the repo.
 part2/Hemophillia-confirm/backend/master-key.txt
+
+# Per-host crypt_shared library: x86-64 on the laptop, aarch64 9.0.2 on the ARM
+# VPS, both at the SAME path so the tracked .env works on either. Never committed:
+# an 80-97 MB binary of one arch in git becomes the other host's boot failure.
+mongodb_crypt/lib/
+mongodb_crypt/*.tgz
+
+data/
+emg-service/data/
+.gitignore2
+dev
+**/*test*
+**/*tests*
+**/*scripts*
+scripts/
+frontend/tools/
